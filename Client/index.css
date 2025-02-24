@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-color: #1677ff;
+}
+
+body {
+    @apply bg-gray-50;
+}
+
+.container {
+    @apply mx-auto px-4;
+    max-width: 1280px;
+}
+
+/* 添加一些全局样式 */
+.btn {
+    @apply px-4 py-2 rounded-lg transition-colors duration-200;
+}
+
+.btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.btn-outline {
+    @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-50;
+}
+
+/* 在现有样式后添加 */
+.page-transition {
+    @apply transition-opacity duration-300;
+}
+
+.page-enter {
+    @apply opacity-0;
+}
+
+.page-enter-active {
+    @apply opacity-100;
+}
+
+.page-exit {
+    @apply opacity-100;
+}
+
+.page-exit-active {
+    @apply opacity-0;
+}
+
+/* 在现有样式后添加 */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.loader-gradient {
+    background: linear-gradient(-45deg, #6366f1, #3b82f6, #60a5fa, #6366f1);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+/* 修改进度条动画样式 */
+.progress-ring {
+    transition: stroke-dashoffset 0.3s ease;
+    transform-origin: center;
+    filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.5));
+}
+
+circle {
+    transition: all 0.3s ease;
+}
+
+/* 亮紫色圆环发光效果 */
+.text-fuchsia-400 {
+    filter: drop-shadow(0 0 4px rgba(232, 121, 249, 0.5));
+}
+
+/* 亮绿色圆环发光效果 */
+.text-green-400 {
+    filter: drop-shadow(0 0 4px rgba(74, 222, 128, 0.5));
+}
+
+@keyframes loadingDots {
+    0% {
+        content: '';
+    }
+
+    25% {
+        content: '.';
+    }
+
+    50% {
+        content: '..';
+    }
+
+    75% {
+        content: '...';
+    }
+
+    100% {
+        content: '';
+    }
+}
+
+.loading-dots::after {
+    content: '';
+    animation: loadingDots 1.5s infinite;
+}
+
+/* 优化背景模糊效果 */
+.backdrop-blur-xl {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: backdrop-filter 0.3s ease;
+}
+
+/* 在现有样式后添加 */
+@layer components {
+
+    /* 导航链接动画 */
+    .nav-link-active {
+        @apply relative overflow-hidden;
+    }
+
+    .nav-link-active::after {
+        content: '';
+        @apply absolute bottom-0 left-0 w-full h-0.5 bg-blue-600;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-link-active:hover::after {
+        transform: scaleX(1);
+    }
+}

@@ -1,0 +1,8 @@
+# 忽略 client 目录中的 node_modules
+client/node_modules/
+
+# 忽略编译产物、构建目录等（如有需要）
+client/build/
+client/dist/
+
+# 忽
